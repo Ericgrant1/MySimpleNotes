@@ -15,6 +15,7 @@
 		52CB14D22703526800D2A4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CB14D12703526800D2A4CF /* Assets.xcassets */; };
 		52CB14D52703526800D2A4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CB14D32703526800D2A4CF /* LaunchScreen.storyboard */; };
 		52CB14DD270353FA00D2A4CF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 52CB14DC270353FA00D2A4CF /* README.md */; };
+		52CB14DF270355CB00D2A4CF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 52CB14DE270355CB00D2A4CF /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		52CB14D42703526800D2A4CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52CB14D62703526800D2A4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CB14DC270353FA00D2A4CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		52CB14DE270355CB00D2A4CF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,8 @@
 		52CB14B92703526600D2A4CF = {
 			isa = PBXGroup;
 			children = (
+				52CB14DE270355CB00D2A4CF /* .gitignore */,
+				52CB14DC270353FA00D2A4CF /* README.md */,
 				52CB14C42703526600D2A4CF /* MySimpleNotes */,
 				52CB14C32703526600D2A4CF /* Products */,
 			);
@@ -68,7 +72,6 @@
 				52CB14D32703526800D2A4CF /* LaunchScreen.storyboard */,
 				52CB14D62703526800D2A4CF /* Info.plist */,
 				52CB14CE2703526600D2A4CF /* MySimpleNotes.xcdatamodeld */,
-				52CB14DC270353FA00D2A4CF /* README.md */,
 			);
 			path = MySimpleNotes;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CB14DF270355CB00D2A4CF /* .gitignore in Resources */,
 				52CB14D52703526800D2A4CF /* LaunchScreen.storyboard in Resources */,
 				52CB14D22703526800D2A4CF /* Assets.xcassets in Resources */,
 				52CB14DD270353FA00D2A4CF /* README.md in Resources */,
