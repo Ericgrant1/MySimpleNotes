@@ -11,7 +11,7 @@ class NotesStorage {
     
     static let storage: NotesStorage = NotesStorage()
     
-    private var noteIndexToIdDict: [Int: UUID] = [:]
+    private var noteIndexToId: [Int: UUID] = [:]
     private var currentIndex: Int = 0
 
     private(set) var managedObjectContext: NSManagedObjectContext
