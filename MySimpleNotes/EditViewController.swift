@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
+class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     
     private(set) var editingNote: NotesModel?
 
@@ -23,6 +23,14 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        editTextView.delegate = self
+        editTextView.font = UIFont(name: "Menlo", size: 15.0)
+        editTextView.layer.borderColor = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 1.0).cgColor
+        editTextView.layer.borderWidth = 1.0
+        editTextView.layer.cornerRadius = 5
+        
+        editDoneButton.layer.cornerRadius = 6
+        
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -30,7 +38,16 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         self.editCategoryPicker.isHidden = true
     }
     
-    @IBAction func editNoteTitle(_ sender: UITextField) {
+    @IBAction func editNoteTitle(_ sender: UITextField, forEvent event: UIEvent) {
+        if self.editingNote != nil {
+            editDoneButton.isEnabled = true
+        } else {
+            if (sender.text?.isEmpty ?? true) || (editTextView.text?.isEmpty ?? true ) {
+                editDoneButton.isEnabled = false
+            } else {
+                editDoneButton.isEnabled = true
+            }
+        }
     }
     
     @IBAction func editNoteCategory(_ sender: UITextField) {
@@ -39,7 +56,12 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         self.editCategoryPicker.layer.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.8).cgColor
     }
     
-    @IBAction func doneButton(_ sender: UIButton) {
+    @IBAction func doneButton(_ sender: UIButton, forEvent event: UIEvent) {
+        if self.editingNote != nil {
+            
+        } else {
+            
+        }
     }
     
     func setEditingNote(editingNote: NotesModel) {
