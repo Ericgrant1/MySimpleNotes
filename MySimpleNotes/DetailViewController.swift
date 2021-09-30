@@ -45,4 +45,14 @@ class DetailViewController: UIViewController {
             setupView()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditNoteSegue" {
+            let editNoteViewController = segue.destination as! EditViewController
+            if let detail = detailItem {
+                editNoteViewController.setEditingNote(
+                    editingNote: detail)
+            }
+        }
+    }
 }

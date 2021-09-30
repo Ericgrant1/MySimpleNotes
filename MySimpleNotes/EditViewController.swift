@@ -9,6 +9,8 @@ import UIKit
 
 class EditViewController: UIViewController {
     
+    private(set) var editingNote: NotesModel?
+    
     @IBOutlet weak var editDateLabel: UILabel!
     @IBOutlet weak var editTitleTextField: UITextField!
     @IBOutlet weak var editCategoryTextField: UITextField!
@@ -29,4 +31,7 @@ class EditViewController: UIViewController {
     @IBAction func doneButton(_ sender: UIButton) {
     }
     
+    func setEditingNote(editingNote: NotesModel) {
+        self.editingNote = editingNote
+    }
 }

@@ -35,8 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
         guard let topAsDetailController =
                 secondaryAsNavController.topViewController as? DetailViewController
         else { return false }
-        // TODO
-        if topAsDetailController == nil {
+        if topAsDetailController.detailItem == nil {
             return true
         }
         return false
