@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
                let textView = detailNoteTextView {
                 titleLabel.text = detail.noteTitle
                 categoryLabel.text = detail.noteCategory
-                dateLabel.text = "Created " + "  |  Last modified "
+                dateLabel.text = "Created " + DateForNote.convertDate(date: Date.init(minutes: detail.noteNew)) + "  |  Last modified " + DateForNote.convertDate(date: Date.init(minutes: detail.noteNew))
                 textView.attributedText = detail.noteText
             }
         }
