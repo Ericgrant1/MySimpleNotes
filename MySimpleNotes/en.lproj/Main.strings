@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Note Date"; ObjectID = "1Qr-PQ-Ts0"; */
+"1Qr-PQ-Ts0.text" = "Note Date";
+
+/* Class = "UIViewController"; title = "Detail"; ObjectID = "56J-A9-tzN"; */
+"56J-A9-tzN.title" = "Detail";
+
+/* Class = "UINavigationItem"; title = "Note Details"; ObjectID = "5bd-hE-GNd"; */
+"5bd-hE-GNd.title" = "Note Details";
+
+/* Class = "UILabel"; text = "Note Category"; ObjectID = "7ma-J6-xnP"; */
+"7ma-J6-xnP.text" = "Note Category";
+
+/* Class = "UINavigationItem"; title = "sweetnote"; ObjectID = "8aR-n5-jbb"; */
+"8aR-n5-jbb.title" = "sweetnote";
+
+/* Class = "UITableViewController"; title = "Notes"; ObjectID = "H5B-fA-Kst"; */
+"H5B-fA-Kst.title" = "Notes";
+
+/* Class = "UILabel"; text = "Note Category"; ObjectID = "HfX-BQ-lkw"; */
+"HfX-BQ-lkw.text" = "Note Category";
+
+/* Class = "UINavigationController"; title = "Notes"; ObjectID = "IZd-s0-xep"; */
+"IZd-s0-xep.title" = "Notes";
+
+/* Class = "UITextField"; placeholder = "Note Category"; ObjectID = "KUf-7f-pNl"; */
+"KUf-7f-pNl.placeholder" = "Note Category";
+
+/* Class = "UILabel"; text = "Note Category"; ObjectID = "Oql-xt-6hv"; */
+"Oql-xt-6hv.text" = "Note Category";
+
+/* Class = "UIButton"; normalTitle = "✓ Done"; ObjectID = "Pvc-ho-wTH"; */
+"Pvc-ho-wTH.normalTitle" = "✓ Done";
+
+/* Class = "UILabel"; text = "Note Date"; ObjectID = "Qc7-F1-Lhc"; */
+"Qc7-F1-Lhc.text" = "Note Date";
+
+/* Class = "UILabel"; text = "Note Text"; ObjectID = "RiN-bM-1mU"; */
+"RiN-bM-1mU.text" = "Note Text";
+
+/* Class = "UILabel"; text = "Note Date"; ObjectID = "TEa-wm-8qk"; */
+"TEa-wm-8qk.text" = "Note Date";
+
+/* Class = "UILabel"; text = "Note Title"; ObjectID = "Xcq-tS-d7a"; */
+"Xcq-tS-d7a.text" = "Note Title";
+
+/* Class = "UITextField"; placeholder = "New Note 1"; ObjectID = "Xjm-v0-dxg"; */
+"Xjm-v0-dxg.placeholder" = "New Note 1";
+
+/* Class = "UIButton"; normalTitle = "✎ Edit"; ObjectID = "eTM-8q-NvS"; */
+"eTM-8q-NvS.normalTitle" = "✎ Edit";
+
+/* Class = "UILabel"; text = "Note Title"; ObjectID = "esm-8f-Mu5"; */
+"esm-8f-Mu5.text" = "Note Title";
+
+/* Class = "UILabel"; text = "Note Text"; ObjectID = "pxK-Ux-NXK"; */
+"pxK-Ux-NXK.text" = "Note Text";
+
+/* Class = "UILabel"; text = "Note Title"; ObjectID = "tCU-wd-Nqj"; */
+"tCU-wd-Nqj.text" = "Note Title";

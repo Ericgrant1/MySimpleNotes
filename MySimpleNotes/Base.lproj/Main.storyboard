@@ -1,24 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M7a-07-9Yh">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Notes-->
+        <scene sceneID="upC-fE-aC4">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController title="Notes" id="IZd-s0-xep" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gyn-Oj-7V5">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="H5B-fA-Kst" kind="relationship" relationship="rootViewController" id="utR-qL-p7Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzX-1u-Eci" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-38" y="-630"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="P3H-jF-crE">
+            <objects>
+                <viewController title="Detail" id="56J-A9-tzN" customClass="DetailViewController" customModule="MySimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="43C-sr-bkY">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esm-8f-Mu5">
+                                <rect key="frame" x="16.000000000000007" y="74" width="98.666666666666686" height="22"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-BI-XW9" userLabel="Note Text View">
+                                <rect key="frame" x="16" y="130.66666666666669" width="396" height="674.33333333333326"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Note Text">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="labelColor"/>
+                                            <font key="NSFont" size="14" name="Verdana"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Date" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc7-F1-Lhc">
+                                <rect key="frame" x="16" y="106" width="396" height="14.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTM-8q-NvS">
+                                <rect key="frame" x="20" y="813" width="388" height="39"/>
+                                <color key="backgroundColor" red="0.7483750817" green="0.89184487349999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="22"/>
+                                <state key="normal" title="✎ Edit">
+                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1gV-Gq-ktw" kind="show" identifier="showEditNoteSegue" id="3Vy-qe-MwI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oql-xt-6hv">
+                                <rect key="frame" x="299.33333333333331" y="76.333333333333329" width="112.66666666666669" height="17.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Cpp-8w-2Lr"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="esm-8f-Mu5" firstAttribute="leading" secondItem="Cpp-8w-2Lr" secondAttribute="leading" constant="16" id="0Tg-7C-9Gl"/>
+                            <constraint firstItem="Cpp-8w-2Lr" firstAttribute="trailing" secondItem="Oql-xt-6hv" secondAttribute="trailing" constant="16" id="46U-5a-GQg"/>
+                            <constraint firstItem="Cpp-8w-2Lr" firstAttribute="trailing" secondItem="eTM-8q-NvS" secondAttribute="trailing" constant="20" id="4QE-rs-6tF"/>
+                            <constraint firstItem="Cpp-8w-2Lr" firstAttribute="trailing" secondItem="Qc7-F1-Lhc" secondAttribute="trailing" constant="16" id="AGX-dO-5Qa"/>
+                            <constraint firstItem="Oql-xt-6hv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="esm-8f-Mu5" secondAttribute="trailing" constant="16" id="FMw-bB-pRg"/>
+                            <constraint firstItem="Qc7-F1-Lhc" firstAttribute="leading" secondItem="Cpp-8w-2Lr" secondAttribute="leading" constant="16" id="I5F-rj-AcG"/>
+                            <constraint firstItem="Cpp-8w-2Lr" firstAttribute="trailing" secondItem="O8Y-BI-XW9" secondAttribute="trailing" constant="16" id="VSN-q9-aUa"/>
+                            <constraint firstItem="Oql-xt-6hv" firstAttribute="centerY" secondItem="esm-8f-Mu5" secondAttribute="centerY" id="Zwu-rQ-pGr"/>
+                            <constraint firstItem="Cpp-8w-2Lr" firstAttribute="bottom" secondItem="eTM-8q-NvS" secondAttribute="bottom" constant="20" id="aaS-6c-Ti8"/>
+                            <constraint firstItem="eTM-8q-NvS" firstAttribute="leading" secondItem="Cpp-8w-2Lr" secondAttribute="leading" constant="20" id="cjj-Y6-sUY"/>
+                            <constraint firstItem="esm-8f-Mu5" firstAttribute="top" secondItem="Cpp-8w-2Lr" secondAttribute="top" constant="18" id="eZa-ec-XiK"/>
+                            <constraint firstItem="O8Y-BI-XW9" firstAttribute="leading" secondItem="Cpp-8w-2Lr" secondAttribute="leading" constant="16" id="gRS-mp-N4z"/>
+                            <constraint firstItem="Qc7-F1-Lhc" firstAttribute="top" secondItem="esm-8f-Mu5" secondAttribute="bottom" constant="10" id="qEj-6y-bEi"/>
+                            <constraint firstItem="O8Y-BI-XW9" firstAttribute="top" secondItem="Qc7-F1-Lhc" secondAttribute="bottom" constant="10" id="qSE-J0-5vc"/>
+                            <constraint firstItem="eTM-8q-NvS" firstAttribute="top" secondItem="O8Y-BI-XW9" secondAttribute="bottom" constant="8" id="umF-fE-OTX"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Note Details" id="5bd-hE-GNd"/>
+                    <connections>
+                        <outlet property="detailCategoryLabel" destination="Oql-xt-6hv" id="vTv-rP-RzJ"/>
+                        <outlet property="detailDateLabel" destination="Qc7-F1-Lhc" id="Kdo-bJ-hWk"/>
+                        <outlet property="detailEditButton" destination="eTM-8q-NvS" id="ucs-gF-g7O"/>
+                        <outlet property="detailNoteTextView" destination="O8Y-BI-XW9" id="UmZ-ZU-5bu"/>
+                        <outlet property="detailTitleLabel" destination="esm-8f-Mu5" id="GqS-Y0-QC6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOG-Im-6g9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="104"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="0E4-Dj-2u5">
+            <objects>
+                <splitViewController id="M7a-07-9Yh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <connections>
+                        <segue destination="IZd-s0-xep" kind="relationship" relationship="masterViewController" id="2Rj-Qc-kIC"/>
+                        <segue destination="MQ0-lD-5Ed" kind="relationship" relationship="detailViewController" id="opF-Z8-3sG"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2w-yR-KVO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-856" y="-330"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="0Gz-QP-A0P">
+            <objects>
+                <viewController id="1gV-Gq-ktw" customClass="EditViewController" customModule="MySimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iqK-fz-Mpo">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-wd-Nqj">
+                                <rect key="frame" x="16" y="16" width="196" height="20"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-J6-xnP">
+                                <rect key="frame" x="16" y="84" width="396" height="20"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Note 1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjm-v0-dxg">
+                                <rect key="frame" x="16" y="44" width="396" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editNoteTitle:" destination="1gV-Gq-ktw" eventType="editingChanged" id="FSe-9f-TbK"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUf-7f-pNl">
+                                <rect key="frame" x="16" y="112" width="396" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editNoteCategory:" destination="1gV-Gq-ktw" eventType="editingDidBegin" id="2mH-d3-mlY"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qr-PQ-Ts0">
+                                <rect key="frame" x="150" y="16" width="262" height="16"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-ho-wTH">
+                                <rect key="frame" x="16" y="779" width="396" height="39"/>
+                                <color key="backgroundColor" red="0.7483750817" green="0.89184487349999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="22"/>
+                                <state key="normal" title="✓ Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="1gV-Gq-ktw" eventType="touchUpInside" id="wcT-RG-aiX"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" keyboardDismissMode="onDrag" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kt4-R5-NLA">
+                                <rect key="frame" x="16" y="179.66666666666669" width="396" height="591.33333333333326"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiN-bM-1mU">
+                                <rect key="frame" x="16" y="152" width="396" height="19.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mW-ZN-vB8">
+                                <rect key="frame" x="16" y="146" width="396" height="165"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="O2t-M6-qYG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="1gV-Gq-ktw" id="COI-HR-p5y"/>
+                                    <outlet property="delegate" destination="1gV-Gq-ktw" id="idE-O3-ppu"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="W5d-n0-uoh"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="tCU-wd-Nqj" secondAttribute="trailing" constant="216" id="0ho-ZO-y9c"/>
+                            <constraint firstItem="1Qr-PQ-Ts0" firstAttribute="top" secondItem="W5d-n0-uoh" secondAttribute="top" constant="16" id="1n6-dO-Amt"/>
+                            <constraint firstItem="kt4-R5-NLA" firstAttribute="top" secondItem="RiN-bM-1mU" secondAttribute="bottom" constant="8" id="2li-VH-6rk"/>
+                            <constraint firstItem="RiN-bM-1mU" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="3oM-ma-LLX"/>
+                            <constraint firstItem="KUf-7f-pNl" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="5Cg-SV-ffR"/>
+                            <constraint firstItem="Pvc-ho-wTH" firstAttribute="top" secondItem="kt4-R5-NLA" secondAttribute="bottom" constant="8" id="AYR-Pi-2Rh"/>
+                            <constraint firstItem="8mW-ZN-vB8" firstAttribute="top" secondItem="KUf-7f-pNl" secondAttribute="bottom" id="Bva-da-PAs"/>
+                            <constraint firstItem="Xjm-v0-dxg" firstAttribute="top" secondItem="tCU-wd-Nqj" secondAttribute="bottom" constant="8" id="EgB-Xd-ith"/>
+                            <constraint firstItem="Pvc-ho-wTH" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="HRI-xZ-fUZ"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="Pvc-ho-wTH" secondAttribute="trailing" constant="16" id="J0Q-t2-Z2a"/>
+                            <constraint firstItem="1Qr-PQ-Ts0" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="150" id="K3o-Ox-J7x"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="RiN-bM-1mU" secondAttribute="trailing" constant="16" id="Lzd-0V-6IC"/>
+                            <constraint firstItem="7ma-J6-xnP" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="NV6-LV-14G"/>
+                            <constraint firstItem="tCU-wd-Nqj" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="SpU-Y8-H8i"/>
+                            <constraint firstItem="tCU-wd-Nqj" firstAttribute="top" secondItem="W5d-n0-uoh" secondAttribute="top" constant="16" id="VC0-X2-8mc"/>
+                            <constraint firstItem="Xjm-v0-dxg" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="XBN-Xd-vox"/>
+                            <constraint firstItem="KUf-7f-pNl" firstAttribute="top" secondItem="7ma-J6-xnP" secondAttribute="bottom" constant="8" id="b3T-95-a61"/>
+                            <constraint firstItem="8mW-ZN-vB8" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="cmX-eF-oTR"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="KUf-7f-pNl" secondAttribute="trailing" constant="16" id="gcq-rz-RZs"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="Xjm-v0-dxg" secondAttribute="trailing" constant="16" id="gmH-JO-t9A"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="bottom" secondItem="Pvc-ho-wTH" secondAttribute="bottom" constant="20" id="hRa-VH-WTi"/>
+                            <constraint firstItem="kt4-R5-NLA" firstAttribute="leading" secondItem="W5d-n0-uoh" secondAttribute="leading" constant="16" id="iXI-4X-jSb"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="kt4-R5-NLA" secondAttribute="trailing" constant="16" id="kyY-J0-Esy"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="1Qr-PQ-Ts0" secondAttribute="trailing" constant="16" id="oCi-DV-wcc"/>
+                            <constraint firstItem="RiN-bM-1mU" firstAttribute="top" secondItem="KUf-7f-pNl" secondAttribute="bottom" constant="6" id="q0u-Mr-yUM"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="7ma-J6-xnP" secondAttribute="trailing" constant="16" id="tI1-VD-EbZ"/>
+                            <constraint firstItem="W5d-n0-uoh" firstAttribute="trailing" secondItem="8mW-ZN-vB8" secondAttribute="trailing" constant="16" id="tje-NT-k0L"/>
+                            <constraint firstItem="7ma-J6-xnP" firstAttribute="top" secondItem="Xjm-v0-dxg" secondAttribute="bottom" constant="6" id="vw8-U4-4ZV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bP9-cY-6Kx"/>
+                    <connections>
+                        <outlet property="editCategoryPicker" destination="8mW-ZN-vB8" id="tzt-A0-RN9"/>
+                        <outlet property="editCategoryTextField" destination="KUf-7f-pNl" id="7sc-bx-2WN"/>
+                        <outlet property="editDateLabel" destination="1Qr-PQ-Ts0" id="tg9-bH-h9m"/>
+                        <outlet property="editDoneButton" destination="Pvc-ho-wTH" id="Noq-JV-7WL"/>
+                        <outlet property="editTextView" destination="kt4-R5-NLA" id="YTb-B1-GxH"/>
+                        <outlet property="editTitleTextField" destination="Xjm-v0-dxg" id="RVU-Lr-glX"/>
+                        <segue destination="H5B-fA-Kst" kind="show" identifier="backToNotesView" id="EjU-DY-qyh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQM-Tk-Ygy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="104"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="o0n-ES-DfM">
+            <objects>
+                <tableViewController title="Notes" clearsSelectionOnViewWillAppear="NO" id="H5B-fA-Kst" customClass="NotesViewController" customModule="MySimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hBb-Ak-YIF">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="11" reuseIdentifier="Cell" rowHeight="100" id="ksf-aY-XrJ" customClass="NoteCellController" customModule="MySimpleNotes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ksf-aY-XrJ" id="ONk-j8-U3F">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcq-tS-d7a">
+                                            <rect key="frame" x="16" y="10" width="88" height="20"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Note Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-wm-8qk">
+                                            <rect key="frame" x="16" y="38" width="396" height="15"/>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Text" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-Ux-NXK">
+                                            <rect key="frame" x="16" y="62" width="396" height="26"/>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfX-BQ-lkw">
+                                            <rect key="frame" x="279" y="11" width="113" height="18"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HfX-BQ-lkw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xcq-tS-d7a" secondAttribute="trailing" constant="16" id="561-pk-yAQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="pxK-Ux-NXK" secondAttribute="trailing" constant="16" id="CSw-19-cTq"/>
+                                        <constraint firstItem="Xcq-tS-d7a" firstAttribute="leading" secondItem="ONk-j8-U3F" secondAttribute="leading" constant="16" id="F2b-fX-QNo"/>
+                                        <constraint firstItem="TEa-wm-8qk" firstAttribute="leading" secondItem="ONk-j8-U3F" secondAttribute="leading" constant="16" id="G3J-49-qvG"/>
+                                        <constraint firstItem="TEa-wm-8qk" firstAttribute="top" secondItem="Xcq-tS-d7a" secondAttribute="bottom" constant="8" id="N3d-rc-yrl"/>
+                                        <constraint firstItem="Xcq-tS-d7a" firstAttribute="top" secondItem="ONk-j8-U3F" secondAttribute="top" constant="10" id="T1v-YP-iif"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HfX-BQ-lkw" secondAttribute="trailing" constant="16" id="W3A-OP-zx1"/>
+                                        <constraint firstAttribute="bottom" secondItem="pxK-Ux-NXK" secondAttribute="bottom" constant="12" id="ZoF-hP-Rv8"/>
+                                        <constraint firstItem="pxK-Ux-NXK" firstAttribute="leading" secondItem="ONk-j8-U3F" secondAttribute="leading" constant="16" id="l2m-zB-MIu"/>
+                                        <constraint firstItem="pxK-Ux-NXK" firstAttribute="top" secondItem="TEa-wm-8qk" secondAttribute="bottom" constant="9" id="rbq-Hi-VPy"/>
+                                        <constraint firstAttribute="trailing" secondItem="TEa-wm-8qk" secondAttribute="trailing" constant="16" id="rzs-kE-5aJ"/>
+                                        <constraint firstItem="HfX-BQ-lkw" firstAttribute="centerY" secondItem="Xcq-tS-d7a" secondAttribute="centerY" id="w2I-yL-JtS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="noteCategoryLabel" destination="HfX-BQ-lkw" id="naF-2R-lZl"/>
+                                    <outlet property="noteDateLabel" destination="TEa-wm-8qk" id="HsI-l6-s6L"/>
+                                    <outlet property="noteTextLabel" destination="pxK-Ux-NXK" id="asY-oK-Ijq"/>
+                                    <outlet property="noteTitleLabel" destination="Xcq-tS-d7a" id="fud-1P-UFB"/>
+                                    <segue destination="MQ0-lD-5Ed" kind="showDetail" identifier="showDetail" id="SSa-kg-L35"/>
+                                    <segue destination="1gV-Gq-ktw" kind="show" identifier="showNewNoteSegue" trigger="accessoryAction" id="RZK-Re-u0Q"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="H5B-fA-Kst" id="wRO-4e-cPh"/>
+                            <outlet property="delegate" destination="H5B-fA-Kst" id="LKJ-oX-oub"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Notes" id="8aR-n5-jbb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbh-R8-X6d" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8N4-Ap-FLC">
+            <objects>
+                <navigationController id="MQ0-lD-5Ed" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zvp-HO-Xwy">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="darkTextColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="56J-A9-tzN" kind="relationship" relationship="rootViewController" id="imF-TZ-hZw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81N-tz-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104" y="106"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SSa-kg-L35"/>
+        <segue reference="EjU-DY-qyh"/>
+        <segue reference="RZK-Re-u0Q"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
