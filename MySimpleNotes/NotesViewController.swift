@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesViewController: UITableViewController {
     
@@ -13,6 +14,18 @@ class NotesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            let alert = UIAlertController(title: "Could note get app delegate",
+                                          message: "Could note get app delegate, unexpected error occurred. Try again later.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        NotesStorage.storage.setManagedContext(managedObjectContext: managedContext)
         
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -35,7 +48,7 @@ class NotesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return NotesStorage.storage.count()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

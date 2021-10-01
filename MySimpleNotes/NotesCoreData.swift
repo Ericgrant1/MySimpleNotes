@@ -31,6 +31,34 @@ class NotesCoreData {
         }
     }
     
+    static func readNotesCoreData(fromManagedObjectContext: NSManagedObjectContext) -> [NotesModel] {
+        
+        var notesReturn = [NotesModel]()
+        let notesFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        notesFetchRequest.predicate = nil
+        
+        do {
+            let fetchedNotesCoreData = try fromManagedObjectContext.fetch(notesFetchRequest)
+            fetchedNotesCoreData.forEach { (fetchRequestResult) in
+                let readNoteMangedObject = fetchRequestResult as! NSManagedObject
+                notesReturn.append(NotesModel.init(
+                    noteId: readNoteMangedObject.value(forKey: "noteId") as! UUID,
+                    noteTitle: readNoteMangedObject.value(forKey: "noteTitle") as! String,
+                    noteText: readNoteMangedObject.value(forKey: "noteText") as! NSAttributedString,
+                    noteNew: readNoteMangedObject.value(forKey: "noteNew") as! Int64,
+                    noteEdit: readNoteMangedObject.value(forKey: "noteEdit") as! Int64,
+                    noteCategory: readNoteMangedObject.value(forKey: "noteCategory") as! String)
+                )
+            }
+        } catch let error as NSError {
+            print("Could not read. \(error), \(error.userInfo)")
+        }
+        self.count = notesReturn.count
+        return notesReturn.sorted() {
+            $0.noteEdit > $1.noteEdit
+        }
+    }
+    
     static func readNoteCoreData(readNoteId: UUID, fromManagedObjectContext: NSManagedObjectContext) -> NotesModel? {
         
         let noteFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")

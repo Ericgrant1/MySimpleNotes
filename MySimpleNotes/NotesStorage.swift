@@ -23,6 +23,16 @@ class NotesStorage {
             concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
     }
     
+    func setManagedContext(managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+        self.managedContextSet = true
+        let notes = NotesCoreData.readNotesCoreData(fromManagedObjectContext: self.managedObjectContext)
+        currentIndex = NotesCoreData.count
+        for (index, note) in notes.enumerated() {
+            noteIndexToId[index] = note.noteId
+        }
+    }
+    
     func addNote(noteAdded: NotesModel) {
         if managedContextSet {
             noteIndexToId[currentIndex] = noteAdded.noteId
@@ -45,5 +55,8 @@ class NotesStorage {
         return nil
     }
     
+    func count() -> Int {
+        return NotesCoreData.count
+    }
 }
 
