@@ -30,4 +30,25 @@ class NotesCoreData {
             print("Could not save object. \(error), \(error.userInfo)")
         }
     }
+    
+    static func readNoteCoreData(readNoteId: UUID, fromManagedObjectContext: NSManagedObjectContext) -> NotesModel? {
+        
+        let noteFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let noteIdPredicate = NSPredicate(format: "noteId = %@", readNoteId as CVarArg)
+        noteFetchRequest.predicate = noteIdPredicate
+        do {
+            let fetchedNotesCoreData = try fromManagedObjectContext.fetch(noteFetchRequest)
+            let readNoteMangedObject = fetchedNotesCoreData[0] as! NSManagedObject
+            return NotesModel.init(noteId: readNoteMangedObject.value(forKey: "noteId") as! UUID,
+                                   noteTitle: readNoteMangedObject.value(forKey: "noteTitle") as! String,
+                                   noteText: readNoteMangedObject.value(forKey: "noteText") as! NSAttributedString,
+                                   noteNew: readNoteMangedObject.value(forKey: "noteNew") as! Int64,
+                                   noteEdit: readNoteMangedObject.value(forKey: "noteEdit") as! Int64,
+                                   noteCategory: readNoteMangedObject.value(forKey: "noteCategory") as! String
+            )
+        } catch let error as NSError {
+            print("Could not read. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
 }

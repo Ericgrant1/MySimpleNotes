@@ -40,6 +40,12 @@ class NotesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NoteCellController
+        if let object = NotesStorage.storage.readNote(index: indexPath.row) {
+            cell.noteTitleLabel.text = object.noteTitle
+            cell.noteTextLabel.attributedText = object.noteText
+            cell.noteCategoryLabel.text = object.noteCategory
+            cell.noteDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: object.noteEdit))
+        }
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
@@ -54,6 +60,18 @@ class NotesViewController: UITableViewController {
             
         } else if editingStyle == .insert {
 
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let object = NotesStorage.storage.readNote(index: indexPath.row)
+                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                controller.detailItem = object
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
 }

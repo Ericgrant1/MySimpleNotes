@@ -30,5 +30,20 @@ class NotesStorage {
             currentIndex += 1
         }
     }
+    
+    func readNote(index: Int) -> NotesModel? {
+        if managedContextSet {
+            if index < 0 || index > currentIndex - 1 {
+                return nil
+            }
+            
+            let noteUUID = noteIndexToId[index]
+            let noteReadCoreData: NotesModel?
+            noteReadCoreData = NotesCoreData.readNoteCoreData(readNoteId: noteUUID!, fromManagedObjectContext: self.managedObjectContext)
+            return noteReadCoreData
+        }
+        return nil
+    }
+    
 }
 
