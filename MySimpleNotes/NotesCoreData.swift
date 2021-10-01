@@ -79,4 +79,26 @@ class NotesCoreData {
             return nil
         }
     }
+    
+    static func removeNoteCoreData(deleteNoteId: UUID, fromManageObjectContext: NSManagedObjectContext) {
+        
+        let noteFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let noteIdCVarArg: CVarArg = deleteNoteId as CVarArg
+        let noteIdPredicate = NSPredicate(format: "noteId == %@", noteIdCVarArg)
+        noteFetchRequest.predicate = noteIdPredicate
+        do {
+            let fetchNotesCoreData = try fromManageObjectContext.fetch(noteFetchRequest)
+            let deletedNoteManageObject = fetchNotesCoreData[0] as! NSManagedObject
+            fromManageObjectContext.delete(deletedNoteManageObject)
+            
+            do {
+                try fromManageObjectContext.save()
+                self.count -= 1
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
 }

@@ -55,6 +55,24 @@ class NotesStorage {
         return nil
     }
     
+    func deleteNote(index: Int) {
+        if managedContextSet {
+            if index < 0 || index > currentIndex - 1 {
+                return
+            }
+            
+            let noteUUID = noteIndexToId[index]
+            NotesCoreData.removeNoteCoreData(deleteNoteId: noteUUID!, fromManageObjectContext: self.managedObjectContext)
+            if (index < currentIndex - 1) {
+                for i in index...currentIndex - 2 {
+                    noteIndexToId[i] = noteIndexToId[i + 1]
+                }
+            }
+            noteIndexToId.removeValue(forKey: currentIndex)
+            currentIndex -= 1
+        }
+    }
+    
     func count() -> Int {
         return NotesCoreData.count
     }

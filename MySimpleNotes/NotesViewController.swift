@@ -70,7 +70,7 @@ class NotesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            applySafeDeletionNote(index: indexPath)
         } else if editingStyle == .insert {
 
         }
@@ -86,5 +86,16 @@ class NotesViewController: UITableViewController {
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
+    }
+    
+    func applySafeDeletionNote(index: IndexPath) {
+        let alert = UIAlertController(title: nil, message: "Are you sure you would like to delete this note?", preferredStyle: .alert)
+        let actionYes = UIAlertAction(title: "Yes", style: .default) { _ in
+            NotesStorage.storage.deleteNote(index: index.row)
+            self.tableView.deleteRows(at: [index], with: .fade)
+        }
+        alert.addAction(actionYes)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
