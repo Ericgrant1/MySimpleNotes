@@ -22,6 +22,7 @@
 		52D734872705A26300C3203D /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D734862705A26300C3203D /* NotesModel.swift */; };
 		52D734892705A97C00C3203D /* NotesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D734882705A97C00C3203D /* NotesStorage.swift */; };
 		52D7348B2705C31F00C3203D /* DateForNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D7348A2705C31E00C3203D /* DateForNote.swift */; };
+		52D7348D27071FD000C3203D /* NotesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D7348C27071FD000C3203D /* NotesCoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		52D734862705A26300C3203D /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
 		52D734882705A97C00C3203D /* NotesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStorage.swift; sourceTree = "<group>"; };
 		52D7348A2705C31E00C3203D /* DateForNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateForNote.swift; sourceTree = "<group>"; };
+		52D7348C27071FD000C3203D /* NotesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				52D734802704DB5E00C3203D /* DetailViewController.swift */,
 				52D734822704E5D000C3203D /* EditViewController.swift */,
 				52D734862705A26300C3203D /* NotesModel.swift */,
+				52D7348C27071FD000C3203D /* NotesCoreData.swift */,
 				52D734882705A97C00C3203D /* NotesStorage.swift */,
 				52D7348A2705C31E00C3203D /* DateForNote.swift */,
 				52CB14CB2703526600D2A4CF /* Main.storyboard */,
@@ -177,6 +180,7 @@
 				52D734872705A26300C3203D /* NotesModel.swift in Sources */,
 				52CB14D02703526600D2A4CF /* MySimpleNotes.xcdatamodeld in Sources */,
 				52D734832704E5D000C3203D /* EditViewController.swift in Sources */,
+				52D7348D27071FD000C3203D /* NotesCoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,9 @@ import UIKit
 
 class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     
+    private let timeOfNoteCreation: Int64 = Date().toMinutes()
+    private let timeOfNoteModification: Int64 = Date().toMinutes()
+    
     private(set) var editingNote: NotesModel?
 
     var listOfCategories = ["Education", "Ideas", "Information", "Inspiration", "Lists", "Personal", "Recipes", "Reminders", "Work", "Other"]
@@ -60,7 +63,7 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         if self.editingNote != nil {
             
         } else {
-            
+            addNoteItem()
         }
     }
     
@@ -84,6 +87,14 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.editCategoryTextField.text = self.listOfCategories[row]
         self.editCategoryPicker.isHidden = true
+    }
+    
+    private func addNoteItem() -> Void {
+        let newNote = NotesModel(noteTitle: editTitleTextField.text!, noteText: editTextView.attributedText, noteNew: timeOfNoteCreation, noteEdit: timeOfNoteModification, noteCategory: editCategoryTextField.text!)
+        
+        NotesStorage.storage.addNote(noteAdded: newNote)
+        
+        performSegue(withIdentifier: "backToNotesView", sender: self)
     }
     
 }
