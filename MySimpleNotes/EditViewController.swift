@@ -90,36 +90,6 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    @objc func handleToolbarDoneButton() {
-        view.endEditing(true)
-    }
-    
-    @objc func handleToolBarImageButton() {
-        
-    }
-    
-    func setEditingNote(editingNote: NotesModel) {
-        self.editingNote = editingNote
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return listOfCategories.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.view.endEditing(true)
-        return listOfCategories[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.editCategoryTextField.text = self.listOfCategories[row]
-        self.editCategoryPicker.isHidden = true
-    }
-    
     private func addNoteItem() -> Void {
         let newNote = NotesModel(noteTitle: editTitleTextField.text!,
                                  noteText: editTextView.attributedText,
@@ -154,6 +124,36 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    @objc func handleToolbarDoneButton() {
+        view.endEditing(true)
+    }
+    
+    @objc func handleToolBarImageButton() {
+        
+    }
+    
+    func setEditingNote(editingNote: NotesModel) {
+        self.editingNote = editingNote
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return listOfCategories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.view.endEditing(true)
+        return listOfCategories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.editCategoryTextField.text = self.listOfCategories[row]
+        self.editCategoryPicker.isHidden = true
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         if self.editingNote != nil {
             editDoneButton.isEnabled = true
@@ -169,6 +169,4 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             }
         }
     }
-    
-    
 }
