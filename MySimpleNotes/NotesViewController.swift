@@ -37,6 +37,8 @@ class NotesViewController: UITableViewController {
         }
         
         self.tableView.delegate = self
+        
+        launchFirstNote()
     }
     
     @objc func insertNewNote(_ sender: Any) {
@@ -97,5 +99,18 @@ class NotesViewController: UITableViewController {
         alert.addAction(actionYes)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func launchFirstNote() {
+        if !UserDefaults.standard.bool(forKey: "FokusStart") {
+            let firstNote = NotesModel(noteTitle: "First Note",
+                                       noteText: NSAttributedString.init(string: "At the first launch, the application should have one note with text "),
+                                       noteNew: Date().toMinutes(),
+                                       noteEdit: Date().toMinutes(),
+                                       noteCategory: "Other")
+            
+            NotesStorage.storage.addNote(noteAdded: firstNote)
+            UserDefaults.standard.set(true, forKey: "FokusStart")
+        }
     }
 }

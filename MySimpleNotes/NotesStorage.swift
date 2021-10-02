@@ -18,7 +18,6 @@ class NotesStorage {
     private var managedContextSet: Bool = false
     
     private init() {
-        // Init the managed object context (to be overwritten by view controller)
         managedObjectContext = NSManagedObjectContext(
             concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
     }

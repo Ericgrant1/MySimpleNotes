@@ -43,8 +43,8 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Note Text">
                                         <attributes>
-                                            <color key="NSColor" systemColor="labelColor"/>
-                                            <font key="NSFont" size="14" name="Verdana"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="15" name="Menlo-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -132,19 +132,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-wd-Nqj">
-                                <rect key="frame" x="16" y="72" width="196" height="20"/>
+                                <rect key="frame" x="16" y="16" width="196" height="20"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-J6-xnP">
-                                <rect key="frame" x="16" y="140" width="396" height="20"/>
+                                <rect key="frame" x="16" y="84" width="396" height="20"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Note 1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjm-v0-dxg">
-                                <rect key="frame" x="16" y="100" width="396" height="34"/>
+                                <rect key="frame" x="16" y="44" width="396" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -153,7 +153,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUf-7f-pNl">
-                                <rect key="frame" x="16" y="168" width="396" height="34"/>
+                                <rect key="frame" x="16" y="112" width="396" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -162,13 +162,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qr-PQ-Ts0">
-                                <rect key="frame" x="150" y="72" width="262" height="16"/>
+                                <rect key="frame" x="150" y="16" width="262" height="16"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-ho-wTH">
-                                <rect key="frame" x="16" y="813" width="396" height="39"/>
+                                <rect key="frame" x="16" y="779" width="396" height="39"/>
                                 <color key="backgroundColor" red="0.7483750817" green="0.89184487349999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="22"/>
                                 <state key="normal" title="✓ Done"/>
@@ -177,18 +177,18 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" keyboardDismissMode="onDrag" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kt4-R5-NLA">
-                                <rect key="frame" x="16" y="235.66666666666669" width="396" height="569.33333333333326"/>
+                                <rect key="frame" x="16" y="179.66666666666669" width="396" height="591.33333333333326"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiN-bM-1mU">
-                                <rect key="frame" x="16" y="208" width="396" height="19.666666666666657"/>
+                                <rect key="frame" x="16" y="152" width="396" height="19.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mW-ZN-vB8">
-                                <rect key="frame" x="16" y="202" width="396" height="165"/>
+                                <rect key="frame" x="16" y="146" width="396" height="165"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="O2t-M6-qYG"/>
                                 </constraints>
@@ -251,7 +251,7 @@
             <objects>
                 <tableViewController title="Notes" clearsSelectionOnViewWillAppear="NO" id="H5B-fA-Kst" customClass="NotesViewController" customModule="MySimpleNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hBb-Ak-YIF">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -277,7 +277,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Text" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-Ux-NXK">
                                             <rect key="frame" x="16" y="62" width="396" height="26"/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -352,9 +352,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
