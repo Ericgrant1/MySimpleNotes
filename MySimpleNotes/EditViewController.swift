@@ -103,7 +103,11 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     }
     
     private func addNoteItem() -> Void {
-        let newNote = NotesModel(noteTitle: editTitleTextField.text!, noteText: editTextView.attributedText, noteNew: timeOfNoteCreation, noteEdit: timeOfNoteModification, noteCategory: editCategoryTextField.text!)
+        let newNote = NotesModel(noteTitle: editTitleTextField.text!,
+                                 noteText: editTextView.attributedText,
+                                 noteNew: timeOfNoteCreation,
+                                 noteEdit: timeOfNoteModification,
+                                 noteCategory: editCategoryTextField.text!)
         
         NotesStorage.storage.addNote(noteAdded: newNote)
         
