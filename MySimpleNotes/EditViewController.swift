@@ -190,4 +190,63 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             }
         }
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) {
+            guard let noteImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            let attachment = NSTextAttachment()
+            attachment.image = noteImage
+            let newImageWith = self.editTextView.bounds.size.width - 20
+            let imageScale = newImageWith / noteImage.size.width
+            let newImageHeight = noteImage.size.height * imageScale
+            
+            func resizeImage(image: UIImage, withSize: CGSize) -> UIImage {
+                var realHeight: CGFloat = image.size.height
+                var realWidth: CGFloat = image.size.width
+                let maxHeight: CGFloat = withSize.height
+                let maxWidth: CGFloat = withSize.width
+                var imageRatio: CGFloat = realWidth / realHeight
+                let maxRation: CGFloat = maxWidth / maxHeight
+                let compressionQuality = 0.5
+                if (realHeight > maxHeight || realWidth > maxWidth) {
+                    if imageRatio < maxRation {
+                        imageRatio = maxHeight / realHeight
+                        realWidth = imageRatio * realWidth
+                        realHeight = maxHeight
+                    } else if imageRatio > maxRation {
+                        imageRatio = maxWidth / realWidth
+                        realHeight = imageRatio * realHeight
+                        realWidth = maxWidth
+                    } else {
+                        realHeight = maxHeight
+                        realWidth = maxWidth
+                    }
+                }
+                let rectangle: CGRect = CGRect(x: 0.0, y: 0.0, width: realWidth, height: realHeight)
+                UIGraphicsBeginImageContext(rectangle.size)
+                image.draw(in: rectangle)
+                let selectedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                let imageData = selectedImage.jpegData(compressionQuality: CGFloat(compressionQuality))
+                UIGraphicsEndImageContext()
+                let resizedImage = UIImage(data: imageData!)
+                return resizedImage!
+            }
+            attachment.image = resizeImage(image: attachment.image!, withSize: CGSize(width: newImageWith, height: newImageHeight))
+            let currentAtString = NSMutableAttributedString(attributedString: self.editTextView.attributedText)
+            let attachmentAtString = NSAttributedString(attachment: attachment)
+            if let selectedRange = self.editTextView.selectedTextRange {
+                let cursorIndex = self.editTextView.offset(from: self.editTextView.beginningOfDocument, to: selectedRange.start)
+                currentAtString.insert(attachmentAtString, at: cursorIndex)
+                currentAtString.addAttributes(self.editTextView.typingAttributes, range: NSRange(location: cursorIndex, length: 1))
+            } else {
+                currentAtString.append(attachmentAtString)
+            }
+            self.editTextView.attributedText = currentAtString
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }
