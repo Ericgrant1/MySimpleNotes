@@ -124,12 +124,24 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    private func showImageSelection() {
+        let alert = UIAlertController(title: "Image Selection", message: "Where would you like to select the image from?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func handleToolbarDoneButton() {
         view.endEditing(true)
     }
     
     @objc func handleToolBarImageButton() {
-        
+        self.showImageSelection()
     }
     
     func setEditingNote(editingNote: NotesModel) {
