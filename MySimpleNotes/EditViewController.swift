@@ -64,6 +64,9 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         editTextView.inputAccessoryView = noteToolBar
         
         hideKeyboardTapOrSwipe()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     @IBAction func editNoteTitle(_ sender: UITextField, forEvent event: UIEvent) {
@@ -159,6 +162,19 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     
     @objc func handleToolBarImageButton() {
         self.showImageSelection()
+    }
+    
+    @objc func showKeyboard(notification: NSNotification) {
+        guard let keboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keboardSize.height - 55, right: 0.0)
+        editTextView.contentInset = contentInsets
+        editTextView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func hideKeyboard(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -55.0, right: 0.0)
+        editTextView.contentInset = contentInsets
+        editTextView.scrollIndicatorInsets = contentInsets
     }
     
     func setEditingNote(editingNote: NotesModel) {
