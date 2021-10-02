@@ -136,4 +136,19 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        if self.editingNote != nil {
+            editDoneButton.isEnabled = true
+        } else {
+            if (editTitleTextField.text?.isEmpty ?? true) ||
+                (editCategoryTextField.text?.isEmpty ?? true) ||
+                (textView.text?.isEmpty ?? true) {
+                editDoneButton.isEnabled = false
+            } else {
+                editDoneButton.isEnabled = true
+                editDoneButton.layer.borderWidth = 3
+                editDoneButton.layer.borderColor = UIColor.systemBlue.cgColor
+            }
+        }
+    }
 }
