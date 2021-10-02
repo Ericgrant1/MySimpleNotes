@@ -16,6 +16,11 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
 
     var listOfCategories = ["Education", "Ideas", "Information", "Inspiration", "Lists", "Personal", "Recipes", "Reminders", "Work", "Other"]
     
+    var auxiliaryDoneButton: UIBarButtonItem!
+    var auxiliaryImageButton: UIBarButtonItem!
+    let softBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let noteToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    
     @IBOutlet weak var editDateLabel: UILabel!
     @IBOutlet weak var editTitleTextField: UITextField!
     @IBOutlet weak var editCategoryTextField: UITextField!
@@ -52,6 +57,11 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         } else {
             editDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: timeOfNoteCreation))
         }
+        
+        auxiliaryDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(handleToolbarDoneButton))
+        auxiliaryImageButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.camera, target: self, action: #selector(handleToolBarImageButton))
+        noteToolBar.items = [auxiliaryImageButton, softBarButton, auxiliaryDoneButton]
+        editTextView.inputAccessoryView = noteToolBar
     }
     
     @IBAction func editNoteTitle(_ sender: UITextField, forEvent event: UIEvent) {
@@ -78,6 +88,14 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         } else {
             addNoteItem()
         }
+    }
+    
+    @objc func handleToolbarDoneButton() {
+        view.endEditing(true)
+    }
+    
+    @objc func handleToolBarImageButton() {
+        
     }
     
     func setEditingNote(editingNote: NotesModel) {
@@ -151,4 +169,6 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             }
         }
     }
+    
+    
 }
