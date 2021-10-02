@@ -62,6 +62,8 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         auxiliaryImageButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.camera, target: self, action: #selector(handleToolBarImageButton))
         noteToolBar.items = [auxiliaryImageButton, softBarButton, auxiliaryDoneButton]
         editTextView.inputAccessoryView = noteToolBar
+        
+        hideKeyboardTapOrSwipe()
     }
     
     @IBAction func editNoteTitle(_ sender: UITextField, forEvent event: UIEvent) {
@@ -143,6 +145,12 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             imagePC.sourceType = sourceType
             self.present(imagePC, animated: false, completion: nil)
         }
+    }
+    
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
     
     @objc func handleToolbarDoneButton() {
@@ -247,6 +255,11 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func hideKeyboardTapOrSwipe() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
     }
     
 }
