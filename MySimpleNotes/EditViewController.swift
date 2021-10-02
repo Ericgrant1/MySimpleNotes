@@ -39,6 +39,19 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         self.editCategoryPicker.isHidden = true
+        
+        if let editingNote = self.editingNote {
+            editDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: timeOfNoteCreation))
+            editTextView.attributedText = editingNote.noteText
+            editTitleTextField.text = editingNote.noteTitle
+            editCategoryTextField.text = editingNote.noteCategory
+            
+            editDoneButton.isEnabled = true
+            editDoneButton.layer.borderWidth = 3
+            editDoneButton.layer.borderColor = UIColor.systemBlue.cgColor
+        } else {
+            editDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: timeOfNoteCreation))
+        }
     }
     
     @IBAction func editNoteTitle(_ sender: UITextField, forEvent event: UIEvent) {
@@ -61,7 +74,7 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func doneButton(_ sender: UIButton, forEvent event: UIEvent) {
         if self.editingNote != nil {
-            
+            editNoteItem()
         } else {
             addNoteItem()
         }
@@ -95,6 +108,28 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         NotesStorage.storage.addNote(noteAdded: newNote)
         
         performSegue(withIdentifier: "backToNotesView", sender: self)
+    }
+    
+    private func editNoteItem() -> Void {
+        if let editingNote = self.editingNote {
+            NotesStorage.storage.editNote(
+                noteEdited: NotesModel(noteId: editingNote.noteId,
+                                       noteTitle: editTitleTextField.text!,
+                                       noteText: editTextView.attributedText,
+                                       noteNew: timeOfNoteCreation,
+                                       noteEdit: timeOfNoteModification,
+                                       noteCategory: editCategoryTextField.text!)
+            )
+            performSegue(withIdentifier: "backToNotesView", sender: self)
+        } else {
+            let alert = UIAlertController(title: "Unexpected error",
+                                          message: "Cannot change the note, unexpected error occurred. Try again later.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.performSegue(withIdentifier: "backToNotesView", sender: self)
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
 }

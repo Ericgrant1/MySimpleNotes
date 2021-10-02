@@ -101,4 +101,22 @@ class NotesCoreData {
             print("Could not delete. \(error), \(error.userInfo)")
         }
     }
+    
+    static func editNoteCoreData(noteEdited: NotesModel, inManagedObjectContext: NSManagedObjectContext) {
+        let noteFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let noteIdPredicate = NSPredicate(format: "noteId == %@", noteEdited.noteId as CVarArg)
+        noteFetchRequest.predicate = noteIdPredicate
+        
+        do {
+            let fetchNotesCoreData = try inManagedObjectContext.fetch(noteFetchRequest)
+            let editedNoteManagedObject = fetchNotesCoreData[0] as! NSManagedObject
+            editedNoteManagedObject.setValue(noteEdited.noteTitle, forKey: "noteTitle")
+            editedNoteManagedObject.setValue(noteEdited.noteText, forKey: "noteText")
+            editedNoteManagedObject.setValue(noteEdited.noteEdit, forKey: "noteEdit")
+            editedNoteManagedObject.setValue(noteEdited.noteCategory, forKey: "noteCategory")
+            try inManagedObjectContext.save()
+        } catch let error as NSError {
+            print("Could not update object. \(error), \(error.userInfo)")
+        }
+    }
 }

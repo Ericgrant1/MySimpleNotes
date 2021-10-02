@@ -73,6 +73,23 @@ class NotesStorage {
         }
     }
     
+    func editNote(noteEdited: NotesModel) {
+        if managedContextSet {
+            var noteEditedIndex: Int?
+            noteIndexToId.forEach { (index: Int, noteId: UUID) in
+                if noteId == noteEdited.noteId {
+                    noteEditedIndex = index
+                    return
+                }
+            }
+            if noteEditedIndex != nil {
+                NotesCoreData.editNoteCoreData(noteEdited: noteEdited, inManagedObjectContext: self.managedObjectContext)
+            } else {
+                
+            }
+        }
+    }
+    
     func count() -> Int {
         return NotesCoreData.count
     }
