@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
+class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let timeOfNoteCreation: Int64 = Date().toMinutes()
     private let timeOfNoteModification: Int64 = Date().toMinutes()
@@ -127,13 +127,22 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     private func showImageSelection() {
         let alert = UIAlertController(title: "Image Selection", message: "Where would you like to select the image from?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            
+            self.addImageToNote(from: .camera)
         }))
         alert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { _ in
-            
+            self.addImageToNote(from: .photoLibrary)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func addImageToNote(from sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            let imagePC = UIImagePickerController()
+            imagePC.delegate = self
+            imagePC.sourceType = sourceType
+            self.present(imagePC, animated: false, completion: nil)
+        }
     }
     
     @objc func handleToolbarDoneButton() {
