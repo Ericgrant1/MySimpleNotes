@@ -10,11 +10,16 @@ import CoreData
 
 class NotesViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     var detailVC: DetailViewController? = nil
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Инициализация Core data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             let alert = UIAlertController(title: "Could note get app delegate",
                                           message: "Could note get app delegate, unexpected error occurred. Try again later.",
@@ -24,11 +29,15 @@ class NotesViewController: UITableViewController {
             return
         }
         
+        // Создание контекста из контейнера делегата приложения
         let managedContext = appDelegate.persistentContainer.viewContext
+        // Установка контекста в хранилище
         NotesStorage.storage.setManagedContext(managedObjectContext: managedContext)
         
+        // Кнопка редактирования заметки
         navigationItem.leftBarButtonItem = editButtonItem
         
+        // Кнопка добавления примечания
         let addNoteButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewNote(_:)))
         navigationItem.rightBarButtonItem = addNoteButton
         if let splitVC = splitViewController {
@@ -41,9 +50,18 @@ class NotesViewController: UITableViewController {
         launchFirstNote()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        super.viewWillAppear(animated)
+    }
+    
+    // MARK: - Selectors
+    
     @objc func insertNewNote(_ sender: Any) {
         performSegue(withIdentifier: "showNewNoteSegue", sender: self)
     }
+    
+    // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -78,6 +96,8 @@ class NotesViewController: UITableViewController {
         }
     }
     
+    // MARK: - Segues
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -90,6 +110,9 @@ class NotesViewController: UITableViewController {
         }
     }
     
+    // MARK: - Helpers
+    
+    // Безопасное удаление заметки
     func applySafeDeletionNote(index: IndexPath) {
         let alert = UIAlertController(title: nil, message: "Are you sure you would like to delete this note?", preferredStyle: .alert)
         let actionYes = UIAlertAction(title: "Yes", style: .default) { _ in
@@ -101,6 +124,7 @@ class NotesViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // Загрузка первой заметки при запуске
     func launchFirstNote() {
         if !UserDefaults.standard.bool(forKey: "FokusStart") {
             let firstNote = NotesModel(noteTitle: "First Note",

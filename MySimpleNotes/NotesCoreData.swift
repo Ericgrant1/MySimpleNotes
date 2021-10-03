@@ -10,10 +10,13 @@ import CoreData
 
 class NotesCoreData {
     
+    // MARK: - Properties
+    
     private(set) static var count: Int = 0
     
+    // MARK: - API
+    
     static func makeNoteCoreData(noteCreated: NotesModel, inManagedObjectContext: NSManagedObjectContext) {
-        
         let noteEntities = NSEntityDescription.entity(forEntityName: "Note", in: inManagedObjectContext)!
         let newNotes = NSManagedObject(entity: noteEntities, insertInto: inManagedObjectContext)
         newNotes.setValue(noteCreated.noteId, forKey: "noteId")

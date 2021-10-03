@@ -9,11 +9,13 @@ import UIKit
 
 class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: - Properties
+    
     private let timeOfNoteCreation: Int64 = Date().toMinutes()
     private let timeOfNoteModification: Int64 = Date().toMinutes()
     
     private(set) var editingNote: NotesModel?
-
+    // Создаем список для выпадающего списка категорий 
     var listOfCategories = ["Education", "Ideas", "Information", "Inspiration", "Lists", "Personal", "Recipes", "Reminders", "Work", "Other"]
     
     var auxiliaryDoneButton: UIBarButtonItem!
@@ -28,43 +30,56 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var editTextView: UITextView!
     @IBOutlet weak var editDoneButton: UIButton!
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Устанавливаем делегата текстового представления, чтобы мы могли реагировать на изменение текста
         editTextView.delegate = self
         editTextView.font = UIFont(name: "Menlo", size: 15.0)
+        // Инициализируем пользовательский интерфейс текстового представления - ширина, радиус и цвет границы
         editTextView.layer.borderColor = UIColor(red: 0.89, green: 0.89, blue: 0.89, alpha: 1.0).cgColor
         editTextView.layer.borderWidth = 1.0
         editTextView.layer.cornerRadius = 5
-        
+        // Стилизуем кнопку создания заметки с закругленными углами
         editDoneButton.layer.cornerRadius = 6
         
+        // Для кнопки «Назад» на панели навигации меняем текст
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
+        // Скрываем по умолчанию раскрывающийся список категорий
         self.editCategoryPicker.isHidden = true
         
+        // Проверяем, находимся ли мы в режиме создания или в режиме редактироваия
         if let editingNote = self.editingNote {
+            // В режиме редактирования: инициализируем поля с данными из заметки, которые нужно изменить
             editDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: timeOfNoteCreation))
             editTextView.attributedText = editingNote.noteText
             editTitleTextField.text = editingNote.noteTitle
             editCategoryTextField.text = editingNote.noteCategory
             
+            // Активировать кнопку "Done" по умолчанию
             editDoneButton.isEnabled = true
             editDoneButton.layer.borderWidth = 3
             editDoneButton.layer.borderColor = UIColor.systemBlue.cgColor
         } else {
+            // В режиме создания: установливаем метку времени создания
             editDateLabel.text = DateForNote.convertDate(date: Date.init(minutes: timeOfNoteCreation))
         }
         
+        // Устанавливаем панель инструментов в текстовом представлении заметки
         auxiliaryDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(handleToolbarDoneButton))
         auxiliaryImageButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.camera, target: self, action: #selector(handleToolBarImageButton))
         noteToolBar.items = [auxiliaryImageButton, softBarButton, auxiliaryDoneButton]
         editTextView.inputAccessoryView = noteToolBar
         
+        // Скрываем клавиатуру при нажатии или смахивании
         hideKeyboardTapOrSwipe()
         
+        // Регистрируем контроллер представления в центре уведомлений по умолчанию, чтобы получать обновления клавиатуры
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
@@ -94,6 +109,8 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             addNoteItem()
         }
     }
+    
+    // MARK: - API
     
     private func addNoteItem() -> Void {
         let newNote = NotesModel(noteTitle: editTitleTextField.text!,
@@ -129,6 +146,8 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    // MARK: - Helpers
+    
     private func showImageSelection() {
         let alert = UIAlertController(title: "Image Selection", message: "Where would you like to select the image from?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
@@ -156,6 +175,8 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         return tap
     }
     
+    // MARK: - Selectors
+    
     @objc func handleToolbarDoneButton() {
         view.endEditing(true)
     }
@@ -181,6 +202,7 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         self.editingNote = editingNote
     }
     
+    // MARK: - UIPickerViewDataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -189,6 +211,7 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
         return listOfCategories.count
     }
     
+    // MARK: - UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         self.view.endEditing(true)
         return listOfCategories[row]
@@ -214,6 +237,8 @@ class EditViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewD
             }
         }
     }
+    
+    // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true) {
